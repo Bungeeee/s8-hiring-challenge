@@ -1,0 +1,38 @@
+.wrapper {
+  height: 100vh;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-body {
+  padding: 3vw;
+  border-radius: 16px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.title {
+  margin: 2vw;
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.button {
+  border: none;
+  font-family: monospace;
+  text-align: center;
+  margin: auto;
+  border-radius: 8px;
+}
+.button:hover { cursor: pointer; }
+.large { padding: 8px; margin-top: 2vh; margin-bottom: 2vh; font-size: 1rem; }
+
+.single-input {
+  padding: 10px;
+  width: 90%;
+  font-size: 1.5rem;
+  text-align: center;
+}
