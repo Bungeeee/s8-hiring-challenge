@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import { RecaptchaVerifier, onAuthStateChanged, signInWithPhoneNumber, updateProfile } from "firebase/auth"
+import { RecaptchaVerifier, onAuthStateChanged, signInWithPhoneNumber, updateProfile, signOut } from "firebase/auth"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth, storage } from "./Firebase"
 
@@ -7,6 +7,7 @@ export const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
   const [info, setInfo] = useState(null)
+  const [statusChecking, setStatus] = useState(true)
 
   const setUpRecaptcha = (number) => {
     console.log(number)
@@ -52,16 +53,21 @@ export const AuthContextProvider = ({children}) => {
     updateProfile(info, {displayName: newName})
     setInfo({...info, displayName: newName})
   }
+  const logout = () => {
+    signOut(auth).then(() => {
+      setInfo(null)
+    })
+  }
 
 
   useEffect(() => {
-    const updateContext = onAuthStateChanged(auth, (user) => { setInfo(user) })
+    const updateContext = onAuthStateChanged(auth, (user) => { setInfo(user);setStatus(false); })
     return () => {
       updateContext()
     }
   }, [])
   return (
-    <AuthContext.Provider value={{ info, setUpRecaptcha, uploadAvatar, changeDisplayName }}>
+    <AuthContext.Provider value={{ info, statusChecking, setUpRecaptcha, uploadAvatar, changeDisplayName, logout }}>
       {children}
     </AuthContext.Provider>
   )

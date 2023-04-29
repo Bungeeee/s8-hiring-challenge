@@ -1,12 +1,14 @@
 import { MuiTelInput } from "mui-tel-input"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../AuthContext"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   const [telnum, setTelNum] = useState('')
   const [confirmation, setConfirmation] = useState(null)
   const [code, setCode] = useState('')
   const authCtx = useContext(AuthContext)
+  const navigate = useNavigate()
   const handleOnSubmitNumber = () => {
     authCtx.setUpRecaptcha(telnum).then((confirmationResult) => {
       // SMS sent. Prompt user to type the code from the message, then sign the
@@ -23,6 +25,7 @@ const Login = () => {
   const handleOnSubmitOTP = () => {
     confirmation.confirm(code).then((res) => {
       console.log('otp-confirmed')
+      navigate('/dashboard')
     }).catch((e) => {alert(e)})
   }
 

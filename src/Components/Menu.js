@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom"
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../AuthContext";
 
 const Menu = () => {
+  const context = useContext(AuthContext)
   const location = useLocation()
   const [listVisible, setListVisible] = useState(false)
   const MenuItem = ({ className, value, path }) => {
@@ -24,7 +26,7 @@ const Menu = () => {
         {menuEntries.map((e) => (
           <MenuItem className={location.pathname.includes(e) ? "menu-item selected" : "menu-item"} value={menuTitle[e]} path={`/${e}`} />
         ))}
-        <div className="menu-item"><div className="logout">Logout</div></div>
+        <div className="menu-item"><div className="logout" onClick={context.logout}>Logout</div></div>
       </div>
     </div>
   )

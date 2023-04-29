@@ -30,7 +30,7 @@ const Personal = () => {
           <div className="personal-image">
             <img src={context.info&&context.info.photoURL? context.info.photoURL:defaultAvatar} />
             <label htmlFor="upload-image" className="upload-image"><AddAPhoto fontSize="medium" /></label>
-            <input type="file" onChange={(e)=>{context.uploadAvatar(e.target.files[0], 'test.png');e.target.value=null}} id="upload-image" />
+            <input type="file" onChange={(e)=>{context.uploadAvatar(e.target.files[0], `${context.info.uid}.jpg`);e.target.value=null}} id="upload-image" />
           </div>
           <div className="personal-box">
             <div className="personal-name">
