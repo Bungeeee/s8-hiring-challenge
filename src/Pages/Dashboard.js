@@ -14,7 +14,7 @@ const SingleStockSnippet = ({symbol}) => {
 }
 
 const Dashboard = () => {
-  const defaultStocks = ['AMZN', 'TSLA', 'SNAP', 'INTC', 'PINS', 'SOFI', 'AAPL', 'META', 'MSFT', 'GOOGL', 'UBER', 'NVDA']
+  const defaultStocks = ['AMZN', 'TSLA', 'SNAP', 'INTC', 'PINS', 'SOFI', 'AAPL', 'META', 'MSFT', 'GOOG', 'UBER', 'NVDA']
   const authCtx = useContext(AuthContext)
   return (
     <>

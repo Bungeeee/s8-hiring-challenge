@@ -337,3 +337,71 @@ a {
     color: #fff;
   }
 }
+
+.stock-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
+}
+.act-icon {
+  font-size: 1.5rem;
+  padding: 12px;
+  margin: 0 10px;
+  border: solid 1px #9c9c9c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.favorite {
+  color: #f00;
+}
+
+@media screen and (max-width: 650px) {
+  .watchlist-title {
+    width: 300px;
+    margin: 4vh auto;
+    padding: 50px 10px;
+    font-size: 2rem;
+    background-color: #76b705;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .watchlist-title {
+    width: 70vw;
+    margin: 4vh auto;
+    padding: 50px 10px;
+    font-size: 2rem;
+    background-color: #76b705;
+    color: #fff;
+  }
+}
+
+.watchlist-body {
+  width: 70%;
+  min-width: 300px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.watchlist-item {
+  width: 300px;
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+  align-items: center;
+  background-color: #d5d5d5;
+  border-radius: 8px;
+}
+.watchlist-item-name {
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+.watchlist-remove {
+  color: #f00;
+  margin-left: auto;
+  margin-right: 0;
+}

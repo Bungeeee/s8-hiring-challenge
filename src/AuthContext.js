@@ -1,12 +1,14 @@
 import { createContext, useEffect, useState } from "react"
 import { RecaptchaVerifier, onAuthStateChanged, signInWithPhoneNumber, updateProfile, signOut } from "firebase/auth"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { auth, storage } from "./Firebase"
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, storage, db } from "./Firebase"
 
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
   const [info, setInfo] = useState(null)
+  const [curWatchList, setWatchList] = useState([])
   const [statusChecking, setStatus] = useState(true)
 
   const setUpRecaptcha = (number) => {
@@ -58,16 +60,35 @@ export const AuthContextProvider = ({children}) => {
       setInfo(null)
     })
   }
+  const addToWatchList = (symbol) => {
+    setWatchList([...curWatchList, symbol])
+    setDoc(doc(db, "watch-lists", info.uid), {
+      watchList: [...curWatchList, symbol]
+    });
+  }
+  const removeFromWatchList = (symbol) => {
+    const newList = [...curWatchList].filter((e)=>(e!==symbol))
+    setWatchList(newList)
+    setDoc(doc(db, "watch-lists", info.uid), {
+      watchList: newList
+    });
+  }
 
 
   useEffect(() => {
-    const updateContext = onAuthStateChanged(auth, (user) => { setInfo(user);setStatus(false); })
+    const updateContext = onAuthStateChanged(auth, (user) => {
+      setInfo(user);
+      getDoc(doc(db, "watch-lists", user.uid)).then((res) => {
+        setWatchList(res.data().watchList)
+        setStatus(false);
+      })
+    })
     return () => {
       updateContext()
     }
   }, [])
   return (
-    <AuthContext.Provider value={{ info, statusChecking, setUpRecaptcha, uploadAvatar, changeDisplayName, logout }}>
+    <AuthContext.Provider value={{ info, statusChecking, curWatchList, setUpRecaptcha, uploadAvatar, changeDisplayName, addToWatchList, removeFromWatchList, logout }}>
       {children}
     </AuthContext.Provider>
   )
