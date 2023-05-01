@@ -3,10 +3,11 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 
-const Login = () => {
+const Register = () => {
   const [telnum, setTelNum] = useState('')
   const [confirmation, setConfirmation] = useState(null)
   const [code, setCode] = useState('')
+  const [username, setUserName] = useState('')
   const authCtx = useContext(AuthContext)
   const navigate = useNavigate()
   const handleOnSubmitNumber = () => {
@@ -25,6 +26,7 @@ const Login = () => {
   const handleOnSubmitOTP = () => {
     confirmation.confirm(code).then((res) => {
       console.log('otp-confirmed')
+      authCtx.createNewUser(username)
       navigate('/dashboard')
     }).catch((e) => {alert(e)})
   }
@@ -33,11 +35,14 @@ const Login = () => {
     <div className="wrapper centered">
       { confirmation===null?
         <div className="login-body">
-          <div className="title">Login</div>
+          <div className="title">Register</div>
+          <div className="username-box">
+            <input className="username" value={username} onChange={(e)=>setUserName(e.target.value)} placeholder="Username" />
+          </div>
           <MuiTelInput defaultCountry="TW" forceCallingCode value={telnum} onChange={(num) => { setTelNum(num); }} />
           <div id="recaptcha-container" />
           <div className="button large" onClick={handleOnSubmitNumber} style={{ color: '#fff', backgroundColor: 'blue' }}>Send OTP</div>
-          <div className="to-register">New to here? <Link to='/register'>Register</Link></div>
+          <div className="to-login">Already registered? <Link to='/login'>Login</Link></div>
         </div> : 
         <div className="login-body">
           <div className="title">OTP Verification</div>
@@ -49,4 +54,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

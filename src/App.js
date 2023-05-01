@@ -8,6 +8,7 @@ import Personal from './Pages/Personal';
 import Stock from './Pages/Stock';
 import ProtectedRoute from './Components/ProtectedRoute';
 import WatchList from './Pages/WatchList';
+import Register from './Pages/Register';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/personal' element={<ProtectedRoute element={<Personal />} />} />
           <Route path='/stock-price/:symbol' element={<ProtectedRoute element={<Stock />} />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
           <Route path='*' element={<Navigate to='/login' replace />} />
         </Routes>
       </div>

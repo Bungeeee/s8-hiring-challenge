@@ -10,6 +10,8 @@ export const AuthContextProvider = ({children}) => {
   const [info, setInfo] = useState(null)
   const [curWatchList, setWatchList] = useState([])
   const [statusChecking, setStatus] = useState(true)
+  const [isRegister, setRegister] = useState(false)
+  const [registerName, setRegisterName] = useState('')
 
   const setUpRecaptcha = (number) => {
     console.log(number)
@@ -73,14 +75,27 @@ export const AuthContextProvider = ({children}) => {
       watchList: newList
     });
   }
+  const createNewUser = async (name) => {
+    const user = auth.currentUser
+    await updateProfile(user, { displayName: name })
+    await setDoc(doc(db, "watch-lists", user.uid), {
+      watchList: []
+    })
+  }
 
 
   useEffect(() => {
-    const updateContext = onAuthStateChanged(auth, (user) => {
+    const updateContext = onAuthStateChanged(auth, (user) => {   
       setInfo(user);
       getDoc(doc(db, "watch-lists", user.uid)).then((res) => {
-        setWatchList(res.data().watchList)
-        setStatus(false);
+        try {
+          setWatchList(res.data().watchList)
+          setStatus(false);
+        } catch (e) {
+          console.log(e)
+          setWatchList([])
+          setStatus(false)
+        }
       })
     })
     return () => {
@@ -88,7 +103,7 @@ export const AuthContextProvider = ({children}) => {
     }
   }, [])
   return (
-    <AuthContext.Provider value={{ info, statusChecking, curWatchList, setUpRecaptcha, uploadAvatar, changeDisplayName, addToWatchList, removeFromWatchList, logout }}>
+    <AuthContext.Provider value={{ info, statusChecking, curWatchList, setUpRecaptcha, createNewUser, uploadAvatar, changeDisplayName, addToWatchList, removeFromWatchList, logout }}>
       {children}
     </AuthContext.Provider>
   )

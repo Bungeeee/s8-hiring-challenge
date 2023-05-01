@@ -24,6 +24,17 @@ a {
   font-size: 2rem;
 }
 
+.username-box {
+  padding: 10px;
+}
+.username-box input {
+  width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  border-radius: 4px;
+}
+
 .button {
   border: none;
   font-family: monospace;
