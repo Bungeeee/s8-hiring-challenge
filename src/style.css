@@ -233,11 +233,75 @@ a {
 @media screen and (max-width: 650px) {
   .welcome-text {
     width: 300px;
-    margin: 4vh auto;
+    margin: 4vh auto 2vh auto;
     padding: 50px 10px;
     font-size: 2rem;
     background-color: #c051c0;
     color: #fff;
+  }
+
+  .aa-Autocomplete {
+    width: 280px;
+    margin: 0 auto 2vh auto;
+  }
+  .aa-Input {
+    padding: 10px;
+    border-radius: 8px;
+    width: 280px;
+    font-size: 1.5rem;
+  }
+  .aa-Panel {
+    width: 280px;
+    margin:  8px auto 0 auto;
+    border-radius: 8px;
+  }
+  .aa-Source {
+    width: 280px;
+    border: solid 2px #5f77e3;
+    border-radius: 8px;
+  }
+  .aa-Item {
+    padding: 10px;
+  }
+  .aa-Item:hover {
+    background-color: #a4b3f55b;
+  }
+  .search-symbol {
+    text-align: left;
+    color: #000;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-left: 1vw;
+  }
+  .search-name {
+    text-align: left;
+    color: #a7a6a6;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-left: 1vw;
+  }
+
+  .search-title {
+    margin: auto;
+    margin-bottom: 2vh;
+    font-size: 1.75rem;
+    background-color: #6bbd64;
+    width: 300px;
+    padding: 10px;
+  }
+
+  .brand-declaration {
+    font-size: 16px;
+    color: #a7a6a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 2vh;
+  }
+  .brand-declaration img {
+    width: 30px;
+    height: auto;
   }
 
   .recommend {
@@ -267,7 +331,7 @@ a {
     border: solid 2px #000;
     margin: 2vw 1.25vw;
     border-radius: 16px;
-    background-color: #e0f7ff;
+    background-color: #e7e7e7;
   }
 
   .snippet-title {
@@ -286,12 +350,76 @@ a {
 
 @media screen and (min-width: 650px) {
   .welcome-text {
-    width: 70vw;
-    margin: 4vh auto;
+    width: 40vw;
+    margin: 4vh auto 2vh auto;
     padding: 50px 10px;
     font-size: 2rem;
     background-color: #c051c0;
     color: #fff;
+  }
+
+  .aa-Autocomplete {
+    width: 40vw;
+    margin: 0 auto 2vh auto;
+  }
+  .aa-Input {
+    padding: 10px;
+    border-radius: 8px;
+    width: 40vw;
+    font-size: 1.5rem;
+  }
+  .aa-Panel {
+    width: 40vw;
+    margin:  8px auto 0 auto;
+    border-radius: 8px;
+  }
+  .aa-Source {
+    width: 40vw;
+    border: solid 2px #5f77e3;
+    border-radius: 8px;
+  }
+  .aa-Item {
+    padding: 10px;
+  }
+  .aa-Item:hover {
+    background-color: #a4b3f55b;
+  }
+  .search-symbol {
+    text-align: left;
+    color: #000;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-left: 1vw;
+  }
+  .search-name {
+    text-align: left;
+    color: #a7a6a6;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-left: 1vw;
+  }
+  
+  .search-title {
+    margin: auto;
+    margin-bottom: 2vh;
+    font-size: 1.75rem;
+    background-color: #6bbd64;
+    width: 40vw;
+    padding: 10px;
+  }
+
+  .brand-declaration {
+    font-size: 16px;
+    color: #a7a6a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 2vh;
+  }
+  .brand-declaration img {
+    width: 30px;
+    height: auto;
   }
 
   .recommend {
@@ -299,12 +427,12 @@ a {
     margin-bottom: 2vh;
     font-size: 1.75rem;
     background-color: #f7bb04;
-    width: 70vw;
+    width: 40vw;
     padding: 10px;
   }
 
   .dashboard-stocks {
-    width: 80%;
+    width: 45%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -312,8 +440,8 @@ a {
   }
 
   .snippet-wrapper {
-    width: 15vw;
-    height: 7.5vw;
+    width: 10vw;
+    height: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -321,7 +449,7 @@ a {
     border: solid 2px #000;
     margin: 1.5vw;
     border-radius: 16px;
-    background-color: #e0f7ff;
+    background-color: #e7e7e7;
   }
 
   .snippet-title {
