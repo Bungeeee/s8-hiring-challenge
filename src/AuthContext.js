@@ -10,11 +10,9 @@ export const AuthContextProvider = ({children}) => {
   const [info, setInfo] = useState(null)
   const [curWatchList, setWatchList] = useState([])
   const [statusChecking, setStatus] = useState(true)
-  const [isRegister, setRegister] = useState(false)
-  const [registerName, setRegisterName] = useState('')
 
   const setUpRecaptcha = (number) => {
-    console.log(number)
+    // console.log(number)
     const recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth)
     recaptchaVerifier.render()
     return signInWithPhoneNumber(auth, number, recaptchaVerifier)
@@ -92,7 +90,7 @@ export const AuthContextProvider = ({children}) => {
           setWatchList(res.data().watchList)
           setStatus(false);
         } catch (e) {
-          console.log(e)
+          // console.log(e)
           setWatchList([])
           setStatus(false)
         }
