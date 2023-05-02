@@ -10,15 +10,17 @@ import { CircularProgress } from "@mui/material"
 
 const NewsBlock = ({data}) => {
   return (
-    <div className="news-wrapper">
-      <div className="news-img">
-        <img src={data.banner_image} />
+    <a href={data.url} target="_blank" rel="noopener noreferrer">
+      <div className="news-wrapper">
+        <div className="news-img">
+          <img src={data.banner_image} />
+        </div>
+        <div className="news-body">
+          <div className="news-title">{data.title}</div>
+          <div className="news-summary">{data.summary}</div>
+        </div>
       </div>
-      <div className="news-body">
-        <div className="news-title">{data.title}</div>
-        <div className="news-summary">{data.summary}</div>
-      </div>
-    </div>
+    </a>
   )
 }
 
